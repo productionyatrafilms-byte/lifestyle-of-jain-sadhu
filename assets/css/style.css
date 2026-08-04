@@ -1,0 +1,1066 @@
+@font-face {
+  font-family: "BalooRegular";
+  src: url("../../fonts/Baloo Regular 400.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BerkshireSwash";
+  src: url("../../fonts/BerkshireSwash-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Vidaloka";
+  src: url("../../fonts/Vidaloka-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ITFDevanagari";
+  src: url("../../fonts/ITFDevanagari.ttc")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NotoSansGujaratiRegular";
+  src: url("../../fonts/NotoSansGujarati-Regular.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body[data-lang="hi"] {
+  font-family: "ITFDevanagari" !important;
+  font-weight: 700 !important;
+}
+
+body[data-lang="gu"] {
+  font-family: "NotoSansGujaratiRegular" !important;
+  font-weight: 700 !important;
+}
+
+body {
+  width: 100vw !important;
+  height: 100%;
+  background-image: url("../images/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= HOME BUTTON ================= */
+
+.home-btn {
+  position: fixed;
+  top: 2.2vw;
+  left: 4%;
+  width: 3.5vw;
+  height: 3.5vw;
+  background-image: url("./../images/home.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.home-btn:hover {
+  transform: scale(1.15);
+}
+
+/* ================= PAGE TITLE ================= */
+
+@keyframes titleDropIn {
+  from {
+    top: -12vw;
+    opacity: 0;
+  }
+
+  to {
+    top: 2vw;
+    opacity: 1;
+  }
+}
+
+.page-title {
+  position: fixed;
+  top: 2vw;
+  left: 50%;
+  height: auto;
+  text-align: center;
+  z-index: 10000;
+  transform: translateX(-50%);
+  font-size: 4.5vw;
+  color: #cc2727;
+  font-family: "Vidaloka";
+  display: block;
+  text-shadow: 0 -0.2vw 0.1vw white;
+  white-space: nowrap;
+  transition: top 0.2s ease-in;
+  animation: titleDropIn 0.9s ease-out forwards;
+}
+
+/* ================= LANGUAGE BUTTONS ================= */
+
+.language-container {
+  position: fixed;
+  top: 2.5vw;
+  right: 5%;
+  display: flex;
+  width: 9vw;
+  height: auto;
+  padding: 0.2vw 0.3vw;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "BalooRegular";
+  border: 0.2vw solid #9a3227;
+  background-color: #fcc35e;
+  border-radius: 50vw;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.language-container div {
+  width: 2.5vw;
+  height: 2.5vw;
+  font-size: 1.6vw;
+  text-align: center;
+  border: 0.2vw solid #9a3227;
+  background: #fffacb !important;
+  color: #9a3227;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-family: "BalooRegular", sans-serif;
+}
+
+.language-container div:hover,
+.language-container div.active {
+  background-color: #9a3227 !important;
+  color: #fffacb;
+}
+
+/* ================= GENERAL HERO STYLES ================= */
+
+.hero-container {
+  position: relative;
+  width: 80%;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4vw;
+  margin-top: 2vw;
+}
+
+@keyframes heroWidthGrow {
+  from {
+    width: 30vw;
+  }
+
+  to {
+    width: 70vw;
+  }
+}
+
+.hero-container .hero-img {
+  width: 70vw;
+  height: 35vw;
+  object-fit: fill;
+  margin: 0 auto;
+  animation: heroWidthGrow 1.2s ease-out forwards;
+}
+
+.sub-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fadeInSlow {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.mascot {
+  position: absolute;
+  width: 17%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  opacity: 0;
+  animation: fadeInSlow 1.6s ease-in forwards;
+  animation-delay: 0.3s;
+}
+
+.line {
+  position: absolute;
+  width: 48%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeInSlow 1.6s ease-in forwards;
+  animation-delay: 0.1s;
+}
+
+/* ================= TOPIC ANIMATIONS ================= */
+
+@keyframes slideFromLeft35 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%)
+      translateX(35%) scale(1);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+      translateX(0) scale(1);
+  }
+}
+
+@keyframes slideFromRight12 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%)
+      translateX(-12%) scale(1);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+      translateX(0) scale(1);
+  }
+}
+
+@keyframes slideFromTop70 {
+  from {
+    opacity: 0;
+    top: 68%;
+    transform: translate(-50%, -50%)
+      translateX(0) scale(1);
+  }
+
+  to {
+    opacity: 1;
+    top: 76%;
+    transform: translate(-50%, -50%)
+      translateX(0) scale(1);
+  }
+}
+
+.topic {
+  position: absolute;
+  width: 16vw;
+  height: 6vw;
+  background-image: url("./../images/topic-img.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-align: center;
+  text-decoration: none;
+  z-index: 200;
+  font-family: "BalooRegular";
+  color: #fffacb;
+  font-size: 1.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(-50%, -50%)
+    translateX(0) scale(1);
+  transition:
+    transform 0.3s ease,
+    background-image 0.3s ease;
+}
+
+.topic:hover {
+  background-image: url("./../images/topic-img-hov.png");
+  transform: translate(-50%, -50%)
+    translateX(0) scale(1.2) !important;
+}
+
+.topic-1 {
+  top: 26%;
+  left: 31%;
+  animation: slideFromLeft35 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.topic-2 {
+  top: 58%;
+  left: 26%;
+  animation: slideFromLeft35 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.topic-3 {
+  top: 67%;
+  left: 48%;
+  animation: slideFromTop70 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.topic-4 {
+  top: 28.5%;
+  right: 8%;
+  animation: slideFromRight12 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.topic-5 {
+  top: 61.5%;
+  right: 2%;
+  animation: slideFromRight12 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+/* ================= MAIN LAYOUT ================= */
+
+main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container,
+.right-container {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= LEFT SECTION ================= */
+
+.left-container .title {
+  position: absolute;
+  width: 15vw;
+  height: 6vw;
+  top: 1vw;
+  background-image: url("./../images/topic-img.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fffacb;
+  text-align: center;
+  font-size: 2vw;
+  font-family: "BalooRegular";
+}
+
+.left-container img {
+  display: block;
+  object-fit: contain;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left-container .hero-img1 {
+  width: 90%;
+  height: auto;
+}
+
+.left-container .mascot-1 {
+  width: 60%;
+  height: auto;
+  opacity: 1 !important;
+}
+
+/* ================= GRID VIEW ================= */
+
+.slide-container {
+  width: 95%;
+  height: 35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5vw;
+  font-size: 1vw;
+}
+
+.slide-container.is-hidden {
+  display: none;
+}
+
+.row {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2vw;
+}
+
+.col {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.2vw;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.col:hover {
+  transform: scale(1.03);
+}
+
+/* ================= GRID CIRCLE ================= */
+
+.circle {
+  position: relative;
+   width:22vw!important;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle img {
+  position: relative;
+  width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.circle video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11.5vw;
+  height: 11.5vw;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.circle .ring{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11vw;
+  height: 11vw;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border:0.15vw solid #FF022D;
+  z-index: 999990;
+}
+
+.col .content {
+  width: 100%;
+  height: 7vw !important;
+  text-align: center;
+  color: #9a3227;
+  font-family: "BalooRegular";
+  padding: 0.2vw 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1vw;
+}
+
+body[data-lang="hi"] .col .content {
+  font-weight: 400!important;
+}
+
+body[data-lang="gu"] .col .content  {
+font-size: 0.9vw!important;
+line-height:1.5vw!important;
+font-weight: 700!important;
+}
+
+
+/* ================= SINGLE FIXED VIEW ================= */
+
+.single-view {
+  position: relative;
+    width: 40vw;
+  height: 42vw;
+  margin-top: 8vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-view.is-active {
+  display: flex;
+}
+
+/*
+ * This middle container never translates.
+ * It stays fixed while only its content fades.
+ */
+.single-view-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2vw;
+}
+
+/* ================= SINGLE CIRCLE ================= */
+
+.single-circle {
+  position: relative;
+  width: 25vw;
+  height: 25vw;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/*
+ * The circle frame remains above the video.
+ * Only one circle image exists in the single view.
+ */
+.single-circle img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  display: block;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/*
+ * Video is perfectly centered inside circle.png.
+ * Adjust 62% only when the opening in your
+ * circle image is larger or smaller.
+ */
+.single-circle video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 83%;
+  height: 83%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+  background-color: transparent;
+  display: block;
+  z-index: 9999;
+}
+
+/* ================= SINGLE CONTENT ================= */
+
+.single-slide-content {
+  width: 100%;
+  min-height: 6vw;
+  padding: 0.5vw 2vw;
+  text-align: center;
+  color: #9a3227;
+  font-family: "BalooRegular";
+  font-size: 1.5vw;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+body[data-lang="hi"] .single-slide-content {
+  font-weight: 400!important;
+  line-height: 2.5vw!important;
+}
+
+body[data-lang="gu"] .single-slide-content {
+font-size: 1.4vw!important;
+line-height:2.5vw!important
+}
+
+/* Fade-out state before content changes */
+
+.single-circle.is-fading {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.single-slide-content.is-fading {
+  opacity: 0;
+  transform: translateY(0.5vw);
+}
+
+/* ================= CLOSE BUTTON ================= */
+
+.single-close {
+  position: absolute;
+  top: 5vw;
+  right: 1vw;
+  width: 2.8vw;
+  height: 2.8vw;
+  border-radius: 50%;
+  background-color: #802922;
+  border: 0.2vw solid white;
+  cursor: pointer;
+  z-index: 500;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.single-close:hover {
+  transform: scale(1.1);
+  background-color: #9a3227;
+}
+
+.single-close::before,
+.single-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 55%;
+  height: 0.2vw;
+  background: white;
+  transform-origin: center;
+}
+
+.single-close::before {
+  transform: translate(-50%, -50%)
+    rotate(45deg);
+}
+
+.single-close::after {
+  transform: translate(-50%, -50%)
+    rotate(-45deg);
+}
+
+/* ================= PREVIOUS / NEXT BUTTONS ================= */
+
+.single-nav {
+  position: absolute;
+  top: 18vw;
+  width: 3.8vw;
+  height: 3.8vw;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  z-index: 100;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.single-nav:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.single-nav:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+.prev-btn {
+  left: 0;
+  margin-right: 0;
+  background-image: url("./../images/prev-btn.png");
+}
+
+.next-btn {
+  right: 0;
+  margin-left: 0;
+  background-image: url("./../images/next-btn.png");
+}
+/* ================= PAGINATION ================= */
+
+.single-pagination {
+  position: relative;
+  width: 100%;
+  min-height: 1.2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6vw;
+}
+
+.pagination-bullet {
+  width: 0.8vw;
+  height: 0.8vw;
+  min-width: 0.8vw;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #9a3227;
+  opacity: 0.35;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pagination-bullet:hover {
+  opacity: 0.7;
+  transform: scale(1.15);
+}
+
+.pagination-bullet.active {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.pages{
+  position: absolute;
+  left:2vw;
+  top:50%;
+  transform :translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:1vw;
+     z-index: 999999;
+}
+
+.page{
+  width:7vw;
+  height:5.5vw;
+  background-image: url("./../images/page.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  text-decoration: none;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#FFE8C7;
+  font-size: 1.2vw;
+    font-family: "BalooRegular";
+}
+
+.page:hover,
+.page.active{
+  background-image: url("./../images/page-active.png");
+}
+
+
+body[data-lang="hi"] .page {
+  font-weight: lighter!important;
+}
+
+body[data-lang="gu"] {
+  font-size:1vw!important
+}
+
+/* ================= PRANAM SECTION ================= */
+
+.pranam-container {
+  position: absolute;
+  width: 45vw;
+  height: auto;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pranam-container > .pranam-img {
+  position: relative;
+  width: 85%;
+  height: auto;
+  display: block;
+}
+
+.pranam-container > .pranam-img > img {
+  width: 100%;
+  display: block;
+}
+
+  .pranam-video{
+    position: absolute;
+    left: 51%;
+    top: 49%;
+    transform: translate(-50%,-50%);
+    width: 28vw;
+    height: 28vw;
+    border-radius: 50%;
+background-color: white;
+  }
+
+  .pranam-video video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+
+.pranam-img span {
+  z-index: 15;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  font-size: 3.4vw;
+  transform: translateX(-50%);
+  font-family: "BalooRegular";
+  color: #802922;
+}
+
+.pranam-container .home-btn-1 {
+  position: absolute;
+  top: 88%;
+  left: 50%;
+  width: 15vw;
+  height: auto;
+  transform: translateX(-50%) scale(1);
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
+
+.pranam-container .home-btn-1:hover {
+  transform: translateX(-50%) scale(1.5);
+}
+
+.pranam-container .home-btn-1 img {
+  width: 100%;
+  display: block;
+}
+
+.home-btn-1 span {
+  z-index: 15;
+  position: absolute;
+  top: 45%;
+  left: 38%;
+  font-size: 2.5vw;
+  transform: translateY(-50%);
+  font-family: "BalooRegular";
+  color: #821b00;
+}
+
+/* ================= BACK BUTTON ================= */
+
+.back-btn {
+  position: absolute;
+  left: 4%;
+  top: 4%;
+  width: 3vw;
+  height: 3vw;
+  background-color: #802922;
+  border: 0.25vw solid white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  z-index: 50;
+}
+
+.back-btn i {
+  color: white;
+  font-size: 1vw;
+  transition: font-size 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  background-color: white;
+}
+
+.back-btn:hover i {
+  font-size: 1.2vw;
+  color: #802922 !important;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* @media (max-width: 900px) {
+  body {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  main {
+    min-height: 100vh;
+    height: auto;
+    flex-direction: column;
+    padding-top: 12vw;
+  }
+
+  .left-container,
+  .right-container {
+    width: 100%;
+    min-height: 50vh;
+  }
+
+  .left-container .title {
+    top: 0;
+    width: 28vw;
+    height: 12vw;
+    font-size: 3vw;
+  }
+
+  .left-container .hero-img1 {
+    width: 70%;
+  }
+
+  .left-container .mascot-1 {
+    width: 45%;
+  }
+
+  .slide-container {
+    width: 95%;
+    height: auto;
+    margin-top: 3vw;
+  }
+
+  .row {
+    height: auto;
+  }
+
+  .col {
+    min-height: 30vw;
+  }
+
+  .circle {
+    width: 38vw !important;
+  }
+
+  .circle img {
+    width: 55%;
+  }
+
+  .circle video {
+    width: 17vw;
+    height: 17vw;
+  }
+
+  .col .content {
+    min-height: 9vw;
+    height: auto !important;
+    font-size: 2.2vw;
+  }
+
+  .single-view {
+    min-height: 60vw;
+  }
+
+  .single-view-content {
+    width: 55vw;
+    min-height: 60vw;
+  }
+
+  .single-circle {
+    width: 45vw;
+    height: 45vw;
+  }
+
+  .single-slide-content {
+    min-height: 10vw;
+    font-size: 2.5vw;
+  }
+
+  .single-nav {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .single-close {
+    top: 2vw;
+    width: 5vw;
+    height: 5vw;
+  }
+
+  .pagination-bullet {
+    width: 1.5vw;
+    height: 1.5vw;
+    min-width: 1.5vw;
+  }
+} */

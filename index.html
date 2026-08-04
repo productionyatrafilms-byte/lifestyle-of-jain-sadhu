@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="title"></title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <!-- <a class="home-btn" href="index.html"></a> -->
+    <div class="language-container">
+        <div class="english active">E</div>
+        <div class="hindi">H</div>
+        <div class="gujrati">G</div>
+    </div>
+    <div class="page-title" data-lang-key="title"></div>
+    
+    <div class="hero-container">
+        <img class="hero-img" src="./assets/images/hero-img.png" alt="">
+        <div class="sub-container">
+            <img class="line" src="./assets/images/line.png" alt="">
+            <img class="mascot" src="./assets/images/mascot.png" alt="">
+            <a class="topic topic-1" href="home.html" data-lang-key="title-1"></a>
+            <a class="topic topic-2" href="food.html" data-lang-key="title-2"></a>
+            <a class="topic topic-3" href="clothes.html" data-lang-key="title-3"></a>
+            <a class="topic topic-4" href="life.html" data-lang-key="title-4"></a>
+            <a class="topic topic-5" href="travel.html" data-lang-key="title-5"></a>
+        </div>
+    </div>
+
+    <script src="./assets/js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Play transition sound once, on page load
+            const transitionAudio = new Audio('./assets/audio/transition.mp3');
+            transitionAudio.play().catch((err) => {
+                console.log('Transition audio blocked by browser autoplay policy:', err);
+            });
+
+            // Play click sound when a topic is clicked, then navigate
+            const clickAudio = new Audio('./assets/audio/11.mp3');
+
+            document.querySelectorAll('.topic').forEach((topic) => {
+                topic.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const destination = topic.getAttribute('href');
+
+                    clickAudio.currentTime = 0;
+                    clickAudio.play();
+
+                    setTimeout(() => {
+                        window.location.href = destination;
+                    }, 300); // short delay so the click sound is audible before navigating
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title data-lang-key="title"></title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <a class="home-btn" href="index.html"></a>
+
+    <div class="language-container">
+      <div class="english active">E</div>
+      <div class="hindi">H</div>
+      <div class="gujrati">G</div>
+    </div>
+
+    <div class="pages">
+      <a
+        class="page active"
+        href="home.html"
+        data-lang-key="title-1"
+      ></a>
+
+      <a
+        class="page"
+        href="food.html"
+        data-lang-key="title-2"
+      ></a>
+
+      <a
+        class="page"
+        href="clothes.html"
+        data-lang-key="title-3"
+      ></a>
+
+      <a
+        class="page"
+        href="travel.html"
+        data-lang-key="title-4"
+      ></a>
+
+      <a
+        class="page"
+        href="life.html"
+        data-lang-key="title-5"
+      ></a>
+    </div>
+
+    <main>
+      <!-- ================= LEFT CONTAINER ================= -->
+
+      <div class="left-container">
+        <div
+          class="title"
+          data-lang-key="title-1"
+        ></div>
+
+        <div class="main-container">
+          <img
+            class="hero-img1"
+            src="./assets/images/hero-img.png"
+            alt=""
+          />
+
+          <img
+            class="mascot-1"
+            src="./assets/images/topic-2.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <!-- ================= RIGHT CONTAINER ================= -->
+
+      <div class="right-container">
+        <!-- ================= GRID VIEW ================= -->
+
+        <div class="slide-container">
+          <div class="row row-1">
+            <!-- First column -->
+
+            <div
+              class="col col-2"
+              data-video="./assets/videos/1-1.mp4"
+            >
+              <div class="circle">
+                <img
+                  src="./assets/images/circle.png"
+                  alt=""
+                />
+
+                <div class="ring"></div>
+
+                <video
+                  src="./assets/videos/1-1.mp4"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <div
+                class="content"
+                data-lang-key="slide-1.1"
+              ></div>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <!-- Second column -->
+
+            <div
+              class="col col-1"
+              data-video="./assets/videos/1-2.mp4"
+            >
+              <div class="circle">
+                <img
+                  src="./assets/images/circle.png"
+                  alt=""
+                />
+
+                <div class="ring"></div>
+
+                <video
+                  src="./assets/videos/1-2.mp4"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <div
+                class="content"
+                data-lang-key="slide-1.2"
+              ></div>
+            </div>
+
+            <!-- Third column -->
+
+            <div
+              class="col col-2"
+              data-video="./assets/videos/1-3.mp4"
+            >
+              <div class="circle">
+                <img
+                  src="./assets/images/circle.png"
+                  alt=""
+                />
+
+                <div class="ring"></div>
+
+                <video
+                  src="./assets/videos/1-3.mp4"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <div
+                class="content"
+                data-lang-key="slide-1.3"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SINGLE VIEW ================= -->
+
+        <div class="single-view">
+          <button
+            class="single-close"
+            type="button"
+            title="Back to grid"
+            aria-label="Back to grid"
+          ></button>
+
+          <button
+            class="single-nav prev-btn"
+            type="button"
+            aria-label="Previous item"
+          ></button>
+
+          <div class="single-view-content">
+            <div class="single-circle fade-item">
+              <video
+                id="singleVideo"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <img
+                src="./assets/images/circle.png"
+                alt=""
+              />
+            </div>
+
+            <div
+              class="single-slide-content fade-item"
+              id="singleSlideContent"
+            ></div>
+
+            <div
+              class="single-pagination"
+              aria-label="Slide pagination"
+            ></div>
+          </div>
+
+          <button
+            class="single-nav next-btn"
+            type="button"
+            aria-label="Next item"
+          ></button>
+        </div>
+      </div>
+    </main>
+
+    <script src="./assets/js/app.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slideContainer =
+          document.querySelector(".slide-container");
+
+        const singleView =
+          document.querySelector(".single-view");
+
+        const columns = Array.from(
+          document.querySelectorAll(
+            ".slide-container .col",
+          ),
+        );
+
+        const closeButton =
+          document.querySelector(".single-close");
+
+        const previousButton =
+          document.querySelector(".prev-btn");
+
+        const nextButton =
+          document.querySelector(".next-btn");
+
+        const singleCircle =
+          document.querySelector(".single-circle");
+
+        const singleVideo =
+          document.getElementById("singleVideo");
+
+        const singleSlideContent =
+          document.getElementById(
+            "singleSlideContent",
+          );
+
+        const pagination =
+          document.querySelector(
+            ".single-pagination",
+          );
+
+        const languageButtons =
+          document.querySelectorAll(
+            ".language-container div",
+          );
+
+        const homeButton =
+          document.querySelector(".home-btn");
+
+        const pageLinks = Array.from(
+          document.querySelectorAll(
+            ".pages .page",
+          ),
+        );
+
+        let currentIndex = 0;
+        let fadeTimeout = null;
+
+        /*
+         * ================= AUDIO SETUP =================
+         */
+
+        const popAudio = new Audio(
+          "./assets/audio/pop.mp3",
+        );
+
+        const pageAudio = new Audio(
+          "./assets/audio/11.mp3",
+        );
+
+        const swipeAudio = new Audio(
+          "./assets/audio/swipe.mp3",
+        );
+
+        const clickAudio = new Audio(
+          "./assets/audio/click.mp3",
+        );
+
+        const topicAudio = new Audio(
+          "./assets/audio/topic.mp3",
+        );
+
+        function playSound(audio) {
+          audio.pause();
+          audio.currentTime = 0;
+
+          audio.play().catch(function (error) {
+            console.warn(
+              "Audio failed to play:",
+              audio.src,
+              error,
+            );
+          });
+        }
+
+        function playSoundThenNavigate(audio, url) {
+          let navigated = false;
+
+          function goNow() {
+            if (navigated) {
+              return;
+            }
+
+            navigated = true;
+            window.location.href = url;
+          }
+
+          audio.pause();
+          audio.currentTime = 0;
+
+          audio
+            .play()
+            .then(function () {
+              setTimeout(goNow, 200);
+            })
+            .catch(function (error) {
+              console.warn(
+                "Audio failed to play:",
+                audio.src,
+                error,
+              );
+
+              goNow();
+            });
+
+          setTimeout(goNow, 500);
+        }
+
+        /*
+         * Home button sound and navigation
+         */
+
+        if (homeButton) {
+          homeButton.addEventListener(
+            "click",
+            function (event) {
+              const url =
+                homeButton.getAttribute("href");
+
+              if (url) {
+                event.preventDefault();
+
+                playSoundThenNavigate(
+                  popAudio,
+                  url,
+                );
+              } else {
+                playSound(popAudio);
+              }
+            },
+          );
+        }
+
+        /*
+         * Page navigation sound
+         */
+
+        pageLinks.forEach(function (link) {
+          link.addEventListener(
+            "click",
+            function (event) {
+              const url =
+                link.getAttribute("href");
+
+              if (url) {
+                event.preventDefault();
+
+                playSoundThenNavigate(
+                  pageAudio,
+                  url,
+                );
+              } else {
+                playSound(pageAudio);
+              }
+            },
+          );
+        });
+
+        /*
+         * Create slide data from every column.
+         * Each slide uses the video inside its own column.
+         */
+
+        const slideData = columns.map(
+          function (column) {
+            const content =
+              column.querySelector(".content");
+
+            const gridVideo =
+              column.querySelector("video");
+
+            return {
+              video:
+                gridVideo?.getAttribute("src") ||
+                column.dataset.video ||
+                "",
+
+              langKey:
+                content?.getAttribute(
+                  "data-lang-key",
+                ) || "",
+            };
+          },
+        );
+
+        function pauseGridVideos() {
+          columns.forEach(function (column) {
+            const video =
+              column.querySelector("video");
+
+            if (video) {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+        }
+
+        function pauseSingleVideo() {
+          singleVideo.pause();
+          singleVideo.currentTime = 0;
+        }
+
+        function getTranslatedContent(index) {
+          const gridContent =
+            columns[index]?.querySelector(
+              ".content",
+            );
+
+          return gridContent
+            ? gridContent.innerHTML
+            : "";
+        }
+
+        function updatePagination() {
+          const bullets =
+            pagination.querySelectorAll(
+              ".pagination-bullet",
+            );
+
+          bullets.forEach(
+            function (bullet, index) {
+              const isActive =
+                index === currentIndex;
+
+              bullet.classList.toggle(
+                "active",
+                isActive,
+              );
+
+              bullet.setAttribute(
+                "aria-current",
+                isActive ? "true" : "false",
+              );
+            },
+          );
+        }
+
+        function updateNavigationButtons() {
+          previousButton.disabled =
+            currentIndex === 0;
+
+          nextButton.disabled =
+            currentIndex ===
+            slideData.length - 1;
+        }
+
+        function playCurrentVideo() {
+          singleVideo
+            .play()
+            .catch(function (error) {
+              console.warn(
+                "Video autoplay failed:",
+                error,
+              );
+            });
+        }
+
+        function applyCurrentSlide() {
+          const currentSlide =
+            slideData[currentIndex];
+
+          if (!currentSlide) {
+            return;
+          }
+
+          pauseSingleVideo();
+
+          /*
+           * Set only the video belonging to
+           * the currently selected column.
+           */
+
+          singleVideo.removeAttribute("src");
+
+          singleVideo.load();
+
+          singleVideo.src =
+            currentSlide.video;
+
+          singleVideo.load();
+
+          singleSlideContent.setAttribute(
+            "data-lang-key",
+            currentSlide.langKey,
+          );
+
+          singleSlideContent.innerHTML =
+            getTranslatedContent(
+              currentIndex,
+            );
+
+          updatePagination();
+          updateNavigationButtons();
+
+          singleVideo.addEventListener(
+            "canplay",
+            playCurrentVideo,
+            {
+              once: true,
+            },
+          );
+        }
+
+        function changeSlide(
+          index,
+          instant = false,
+        ) {
+          if (
+            index < 0 ||
+            index >= slideData.length
+          ) {
+            return;
+          }
+
+          currentIndex = index;
+
+          clearTimeout(fadeTimeout);
+
+          if (instant) {
+            singleCircle.classList.remove(
+              "is-fading",
+            );
+
+            singleSlideContent.classList.remove(
+              "is-fading",
+            );
+
+            applyCurrentSlide();
+
+            return;
+          }
+
+          singleCircle.classList.add(
+            "is-fading",
+          );
+
+          singleSlideContent.classList.add(
+            "is-fading",
+          );
+
+          fadeTimeout = setTimeout(
+            function () {
+              applyCurrentSlide();
+
+              requestAnimationFrame(
+                function () {
+                  singleCircle.classList.remove(
+                    "is-fading",
+                  );
+
+                  singleSlideContent.classList.remove(
+                    "is-fading",
+                  );
+                },
+              );
+            },
+            250,
+          );
+        }
+
+        function openSingleView(startIndex) {
+          if (
+            startIndex < 0 ||
+            startIndex >= slideData.length
+          ) {
+            return;
+          }
+
+          currentIndex = startIndex;
+
+          pauseGridVideos();
+
+          slideContainer.classList.add(
+            "is-hidden",
+          );
+
+          singleView.classList.add(
+            "is-active",
+          );
+
+          changeSlide(
+            currentIndex,
+            true,
+          );
+        }
+
+        function closeSingleView() {
+          pauseSingleVideo();
+
+          singleVideo.removeAttribute("src");
+          singleVideo.load();
+
+          singleView.classList.remove(
+            "is-active",
+          );
+
+          slideContainer.classList.remove(
+            "is-hidden",
+          );
+        }
+
+        function createPagination() {
+          pagination.innerHTML = "";
+
+          slideData.forEach(
+            function (_, index) {
+              const bullet =
+                document.createElement(
+                  "button",
+                );
+
+              bullet.type = "button";
+
+              bullet.className =
+                "pagination-bullet";
+
+              bullet.setAttribute(
+                "aria-label",
+                "Open item " + (index + 1),
+              );
+
+              bullet.addEventListener(
+                "click",
+                function () {
+                  if (
+                    index !== currentIndex
+                  ) {
+                    playSound(swipeAudio);
+                    changeSlide(index);
+                  }
+                },
+              );
+
+              pagination.appendChild(
+                bullet,
+              );
+            },
+          );
+        }
+
+        /*
+         * Important fix:
+         *
+         * Use the real position of the clicked
+         * column instead of data-index.
+         *
+         * First column = index 0
+         * Second column = index 1
+         * Third column = index 2
+         */
+
+        columns.forEach(
+          function (column, index) {
+            column.addEventListener(
+              "click",
+              function () {
+                playSound(topicAudio);
+
+                openSingleView(index);
+              },
+            );
+          },
+        );
+
+        /*
+         * Previous button
+         */
+
+        previousButton.addEventListener(
+          "click",
+          function () {
+            if (currentIndex > 0) {
+              playSound(swipeAudio);
+
+              changeSlide(
+                currentIndex - 1,
+              );
+            }
+          },
+        );
+
+        /*
+         * Next button
+         */
+
+        nextButton.addEventListener(
+          "click",
+          function () {
+            if (
+              currentIndex <
+              slideData.length - 1
+            ) {
+              playSound(swipeAudio);
+
+              changeSlide(
+                currentIndex + 1,
+              );
+            }
+          },
+        );
+
+        /*
+         * Close button
+         */
+
+        closeButton.addEventListener(
+          "click",
+          function () {
+            playSound(clickAudio);
+            closeSingleView();
+          },
+        );
+
+        /*
+         * Update single-view content
+         * after language switching.
+         */
+
+        languageButtons.forEach(
+          function (button) {
+            button.addEventListener(
+              "click",
+              function () {
+                setTimeout(
+                  function () {
+                    if (
+                      singleView.classList.contains(
+                        "is-active",
+                      )
+                    ) {
+                      singleSlideContent.innerHTML =
+                        getTranslatedContent(
+                          currentIndex,
+                        );
+                    }
+                  },
+                  100,
+                );
+              },
+            );
+          },
+        );
+
+        /*
+         * Observe translated grid content.
+         */
+
+        columns.forEach(
+          function (column, index) {
+            const content =
+              column.querySelector(
+                ".content",
+              );
+
+            if (!content) {
+              return;
+            }
+
+            const observer =
+              new MutationObserver(
+                function () {
+                  if (
+                    singleView.classList.contains(
+                      "is-active",
+                    ) &&
+                    index === currentIndex
+                  ) {
+                    singleSlideContent.innerHTML =
+                      content.innerHTML;
+                  }
+                },
+              );
+
+            observer.observe(content, {
+              childList: true,
+              subtree: true,
+              characterData: true,
+            });
+          },
+        );
+
+        createPagination();
+        updateNavigationButtons();
+      });
+    </script>
+  </body>
+</html>

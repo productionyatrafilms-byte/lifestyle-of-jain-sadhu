@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title data-lang-key="title"></title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <a class="home-btn" href="index.html"></a>
+
+    <div class="language-container">
+      <div class="english active">E</div>
+      <div class="hindi">H</div>
+      <div class="gujrati">G</div>
+    </div>
+
+  <div class="pages">
+      <a class="page" href="home.html" data-lang-key="title-1"></a>
+      <a class="page active" href="food.html" data-lang-key="title-2"></a>
+      <a class="page" href="clothes.html" data-lang-key="title-3"></a>
+      <a class="page" href="travel.html" data-lang-key="title-4"></a>
+      <a class="page" href="life.html" data-lang-key="title-5"></a>
+    </div>
+
+    <main>
+      <!-- ================= LEFT CONTAINER ================= -->
+      <div class="left-container">
+        <div class="title" data-lang-key="title-2"></div>
+
+        <div class="main-container">
+          <img
+            class="hero-img1"
+            src="./assets/images/hero-img.png"
+            alt=""
+          />
+
+          <img
+            class="mascot-1"
+            src="./assets/images/topic-2.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <!-- ================= RIGHT CONTAINER ================= -->
+      <div class="right-container">
+        <!-- ================= GRID VIEW ================= -->
+        <div class="slide-container">
+          <div class="row row-1">
+            <div
+              class="col col-1"
+              data-index="0"
+              data-video="./assets/videos/2-1.mp4"
+            >
+              <div class="circle">
+                <img src="./assets/images/circle.png" alt="" />
+                <div class="ring"></div>
+                <video
+                  src="./assets/videos/2-1.mp4"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <div
+                class="content"
+                data-lang-key="slide-2.1"
+              ></div>
+            </div>
+
+            <div
+              class="col col-2"
+              data-index="1"
+              data-video="./assets/videos/2-2.mp4"
+            >
+              <div class="circle">
+                <img src="./assets/images/circle.png" alt="" />
+                 <div class="ring"></div>
+                <video
+                  src="./assets/videos/2-2.mp4"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <div
+                class="content"
+                data-lang-key="slide-2.2"
+              ></div>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div
+              class="col col-1"
+              data-index="2"
+              data-video="./assets/videos/2-3.mp4"
+            >
+              <div class="circle">
+                <img src="./assets/images/circle.png" alt="" />
+                 <div class="ring"></div>
+                <video
+                  src="./assets/videos/2-3.mp4"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <div
+                class="content"
+                data-lang-key="slide-2.3"
+              ></div>
+            </div>
+
+            <div
+              class="col col-2"
+              data-index="3"
+              data-video="./assets/videos/2-4.mp4"
+            >
+              <div class="circle">
+                <img src="./assets/images/circle.png" alt="" />
+                 <div class="ring"></div>
+                <video
+                  src="./assets/videos/2-4.mp4"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <div
+                class="content"
+                data-lang-key="slide-2.4"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SINGLE VIEW ================= -->
+        <div class="single-view">
+          <button
+            class="single-close"
+            type="button"
+            title="Back to grid"
+            aria-label="Back to grid"
+          ></button>
+
+          <button
+            class="single-nav prev-btn"
+            type="button"
+            aria-label="Previous item"
+          ></button>
+
+          <div class="single-view-content">
+            <!-- Only one circle image is used here -->
+            <div class="single-circle fade-item">
+              <video
+                id="singleVideo"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <img
+                src="./assets/images/circle.png"
+                alt=""
+              />
+            </div>
+
+            <!-- Only this content changes -->
+            <div
+              class="single-slide-content fade-item"
+              id="singleSlideContent"
+            ></div>
+
+            <div
+              class="single-pagination"
+              aria-label="Slide pagination"
+            ></div>
+          </div>
+
+          <button
+            class="single-nav next-btn"
+            type="button"
+            aria-label="Next item"
+          ></button>
+        </div>
+      </div>
+    </main>
+
+    <script src="./assets/js/app.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slideContainer =
+          document.querySelector(".slide-container");
+
+        const singleView =
+          document.querySelector(".single-view");
+
+        const columns = Array.from(
+          document.querySelectorAll(".slide-container .col"),
+        );
+
+        const closeButton =
+          document.querySelector(".single-close");
+
+        const previousButton =
+          document.querySelector(".prev-btn");
+
+        const nextButton =
+          document.querySelector(".next-btn");
+
+        const singleCircle =
+          document.querySelector(".single-circle");
+
+        const singleVideo =
+          document.getElementById("singleVideo");
+
+        const singleSlideContent =
+          document.getElementById("singleSlideContent");
+
+        const pagination =
+          document.querySelector(".single-pagination");
+
+        const languageButtons = document.querySelectorAll(
+          ".language-container div",
+        );
+
+        const homeButton =
+          document.querySelector(".home-btn");
+
+        const pageLinks = Array.from(
+          document.querySelectorAll(".pages .page"),
+        );
+
+        let currentIndex = 0;
+        let fadeTimeout = null;
+
+        /*
+         * ================= AUDIO SETUP =================
+         * One reusable Audio object per sound so rapid
+         * clicks restart the sound instead of stacking up.
+         */
+        const popAudio = new Audio("./assets/audio/pop.mp3");
+        const pageAudio = new Audio("./assets/audio/11.mp3");
+        const swipeAudio = new Audio("./assets/audio/swipe.mp3");
+        const clickAudio = new Audio("./assets/audio/click.mp3");
+        const topicAudio = new Audio("./assets/audio/topic.mp3");
+
+        function playSound(audio) {
+          audio.currentTime = 0;
+
+          audio.play().catch(function (error) {
+            /*
+             * Log the failure instead of swallowing it.
+             * The most common cause is a wrong file path
+             * (e.g. ./assets/audio/pop.mp3 doesn't exist),
+             * which the browser reports as a rejected
+             * promise here - check the console if a sound
+             * isn't playing.
+             */
+            console.warn(
+              "Audio failed to play:",
+              audio.src,
+              error,
+            );
+          });
+        }
+
+        /*
+         * Links that navigate to another page (home-btn,
+         * page links) unload the page almost instantly on
+         * click - audio.play() is asynchronous, so the sound
+         * usually gets cut off before it's even started.
+         * This helper plays the sound first, waits for it to
+         * actually start (or a short fallback timeout if
+         * something blocks it), then performs the navigation.
+         */
+        function playSoundThenNavigate(audio, url) {
+          let navigated = false;
+
+          function goNow() {
+            if (navigated) {
+              return;
+            }
+
+            navigated = true;
+            window.location.href = url;
+          }
+
+          audio.currentTime = 0;
+
+          audio
+            .play()
+            .then(function () {
+              /*
+               * Give the sound a brief moment to be heard
+               * before leaving the page. Adjust the 200ms
+               * delay if pop.mp3 / 11.mp3 are longer or
+               * shorter than that.
+               */
+              setTimeout(goNow, 200);
+            })
+            .catch(function (error) {
+              console.warn(
+                "Audio failed to play:",
+                audio.src,
+                error,
+              );
+
+              /*
+               * If the sound couldn't play at all, don't
+               * block navigation - just go immediately.
+               */
+              goNow();
+            });
+
+          /*
+           * Safety net in case the audio hangs for any
+           * reason (slow network, corrupt file, etc.) -
+           * never delay navigation more than half a second.
+           */
+          setTimeout(goNow, 500);
+        }
+
+        /*
+         * Home button -> pop sound
+         */
+        if (homeButton) {
+          homeButton.addEventListener(
+            "click",
+            function (event) {
+              const url = homeButton.getAttribute("href");
+
+              if (url) {
+                event.preventDefault();
+                playSoundThenNavigate(popAudio, url);
+              } else {
+                playSound(popAudio);
+              }
+            },
+          );
+        }
+
+        /*
+         * Page navigation links -> 11.mp3 sound
+         */
+        pageLinks.forEach(function (link) {
+          link.addEventListener(
+            "click",
+            function (event) {
+              const url = link.getAttribute("href");
+
+              if (url) {
+                event.preventDefault();
+                playSoundThenNavigate(pageAudio, url);
+              } else {
+                playSound(pageAudio);
+              }
+            },
+          );
+        });
+
+        /*
+         * Data is collected from the grid.
+         * You can give every .col a different data-video path.
+         */
+        const slideData = columns.map(function (column) {
+          const content =
+            column.querySelector(".content");
+
+          const gridVideo =
+            column.querySelector("video");
+
+          return {
+            video:
+              column.dataset.video ||
+              gridVideo?.getAttribute("src") ||
+              "",
+
+            langKey:
+              content?.getAttribute("data-lang-key") || "",
+          };
+        });
+
+        function pauseGridVideos() {
+          columns.forEach(function (column) {
+            const video = column.querySelector("video");
+
+            if (video) {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+        }
+
+        function pauseSingleVideo() {
+          singleVideo.pause();
+          singleVideo.currentTime = 0;
+        }
+
+        function getTranslatedContent(index) {
+          const gridContent =
+            columns[index]?.querySelector(".content");
+
+          return gridContent
+            ? gridContent.innerHTML
+            : "";
+        }
+
+        function updatePagination() {
+          const bullets = pagination.querySelectorAll(
+            ".pagination-bullet",
+          );
+
+          bullets.forEach(function (bullet, index) {
+            const isActive = index === currentIndex;
+
+            bullet.classList.toggle(
+              "active",
+              isActive,
+            );
+
+            bullet.setAttribute(
+              "aria-current",
+              isActive ? "true" : "false",
+            );
+          });
+        }
+
+        function updateNavigationButtons() {
+          previousButton.disabled =
+            currentIndex === 0;
+
+          nextButton.disabled =
+            currentIndex === slideData.length - 1;
+        }
+
+        function playCurrentVideo() {
+          singleVideo
+            .play()
+            .catch(function () {
+              /*
+               * Some browsers may block autoplay.
+               * The video remains ready to play.
+               */
+            });
+        }
+
+        function applyCurrentSlide() {
+          const currentSlide =
+            slideData[currentIndex];
+
+          if (!currentSlide) {
+            return;
+          }
+
+          pauseSingleVideo();
+
+          singleVideo.src =
+            currentSlide.video;
+
+          singleVideo.load();
+
+          singleSlideContent.setAttribute(
+            "data-lang-key",
+            currentSlide.langKey,
+          );
+
+          /*
+           * Copy the already translated content
+           * from the matching grid item.
+           */
+          singleSlideContent.innerHTML =
+            getTranslatedContent(currentIndex);
+
+          updatePagination();
+          updateNavigationButtons();
+
+          singleVideo.addEventListener(
+            "canplay",
+            playCurrentVideo,
+            { once: true },
+          );
+        }
+
+        function changeSlide(index, instant = false) {
+          if (
+            index < 0 ||
+            index >= slideData.length
+          ) {
+            return;
+          }
+
+          currentIndex = index;
+
+          clearTimeout(fadeTimeout);
+
+          if (instant) {
+            singleCircle.classList.remove(
+              "is-fading",
+            );
+
+            singleSlideContent.classList.remove(
+              "is-fading",
+            );
+
+            applyCurrentSlide();
+            return;
+          }
+
+          /*
+           * Fade out only the circle/video and content.
+           * The full container never moves or swipes.
+           */
+          singleCircle.classList.add(
+            "is-fading",
+          );
+
+          singleSlideContent.classList.add(
+            "is-fading",
+          );
+
+          fadeTimeout = setTimeout(function () {
+            applyCurrentSlide();
+
+            requestAnimationFrame(function () {
+              singleCircle.classList.remove(
+                "is-fading",
+              );
+
+              singleSlideContent.classList.remove(
+                "is-fading",
+              );
+            });
+          }, 250);
+        }
+
+        function openSingleView(startIndex) {
+          currentIndex = startIndex;
+
+          pauseGridVideos();
+
+          slideContainer.classList.add(
+            "is-hidden",
+          );
+
+          singleView.classList.add(
+            "is-active",
+          );
+
+          changeSlide(currentIndex, true);
+        }
+
+        function closeSingleView() {
+          pauseSingleVideo();
+
+          singleView.classList.remove(
+            "is-active",
+          );
+
+          slideContainer.classList.remove(
+            "is-hidden",
+          );
+        }
+
+        function createPagination() {
+          pagination.innerHTML = "";
+
+          slideData.forEach(function (_, index) {
+            const bullet =
+              document.createElement("button");
+
+            bullet.type = "button";
+            bullet.className =
+              "pagination-bullet";
+
+            bullet.setAttribute(
+              "aria-label",
+              "Open item " + (index + 1),
+            );
+
+            bullet.addEventListener(
+              "click",
+              function () {
+                if (index !== currentIndex) {
+                  changeSlide(index);
+                }
+              },
+            );
+
+            pagination.appendChild(bullet);
+          });
+        }
+
+        /*
+         * Grid item (col) -> topic sound
+         */
+        columns.forEach(function (column) {
+          column.addEventListener(
+            "click",
+            function () {
+              playSound(topicAudio);
+
+              const startIndex =
+                Number.parseInt(
+                  column.dataset.index,
+                  10,
+                ) || 0;
+
+              openSingleView(startIndex);
+            },
+          );
+        });
+
+        /*
+         * Prev / Next navigation buttons -> swipe sound
+         */
+        previousButton.addEventListener(
+          "click",
+          function () {
+            playSound(swipeAudio);
+            changeSlide(currentIndex - 1);
+          },
+        );
+
+        nextButton.addEventListener(
+          "click",
+          function () {
+            playSound(swipeAudio);
+            changeSlide(currentIndex + 1);
+          },
+        );
+
+        /*
+         * Close button -> click sound
+         */
+        closeButton.addEventListener(
+          "click",
+          function () {
+            playSound(clickAudio);
+            closeSingleView();
+          },
+        );
+
+        /*
+         * After language switching, app.js updates
+         * the grid content. Copy the new translated
+         * content into the single view.
+         */
+        languageButtons.forEach(function (button) {
+          button.addEventListener(
+            "click",
+            function () {
+              setTimeout(function () {
+                if (
+                  singleView.classList.contains(
+                    "is-active",
+                  )
+                ) {
+                  singleSlideContent.innerHTML =
+                    getTranslatedContent(
+                      currentIndex,
+                    );
+                }
+              }, 100);
+            },
+          );
+        });
+
+        /*
+         * Observe translated grid content so the
+         * single caption always remains synchronized.
+         */
+        columns.forEach(function (column, index) {
+          const content =
+            column.querySelector(".content");
+
+          if (!content) {
+            return;
+          }
+
+          const observer =
+            new MutationObserver(function () {
+              if (
+                singleView.classList.contains(
+                  "is-active",
+                ) &&
+                index === currentIndex
+              ) {
+                singleSlideContent.innerHTML =
+                  content.innerHTML;
+              }
+            });
+
+          observer.observe(content, {
+            childList: true,
+            subtree: true,
+            characterData: true,
+          });
+        });
+
+        createPagination();
+        updateNavigationButtons();
+      });
+    </script>
+  </body>
+</html>
