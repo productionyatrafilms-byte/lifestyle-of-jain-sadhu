@@ -4,7 +4,8 @@ const btnGu = document.querySelector(".gujrati");
 
 const DEFAULT_LANG = "English";
 const STORAGE_KEY = "selectedLanguage";
-let translations = {};
+// translations come from assets/js/data.js, which must be loaded first
+let translations = typeof data !== "undefined" ? data : {};
 
 // ================= LANDSCAPE ALERT =================
 
@@ -129,44 +130,24 @@ function isPageRefresh() {
 window.addEventListener(
   "DOMContentLoaded",
   function () {
-    fetch("./assets/json/data.json")
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error(
-            "Unable to load data.json",
-          );
-        }
+    const savedLang =
+      localStorage.getItem(STORAGE_KEY);
 
-        return response.json();
-      })
-      .then(function (data) {
-        translations = data;
+    let langToApply = DEFAULT_LANG;
 
-        const savedLang =
-          localStorage.getItem(STORAGE_KEY);
+    if (isPageRefresh()) {
+      langToApply = DEFAULT_LANG;
 
-        let langToApply = DEFAULT_LANG;
+      localStorage.setItem(
+        STORAGE_KEY,
+        DEFAULT_LANG,
+      );
+    } else {
+      langToApply =
+        savedLang || DEFAULT_LANG;
+    }
 
-        if (isPageRefresh()) {
-          langToApply = DEFAULT_LANG;
-
-          localStorage.setItem(
-            STORAGE_KEY,
-            DEFAULT_LANG,
-          );
-        } else {
-          langToApply =
-            savedLang || DEFAULT_LANG;
-        }
-
-        applyLanguage(langToApply);
-      })
-      .catch(function (err) {
-        console.error(
-          "Error loading translations:",
-          err,
-        );
-      });
+    applyLanguage(langToApply);
   },
 );
 
